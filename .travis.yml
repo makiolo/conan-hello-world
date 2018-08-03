@@ -2,6 +2,5 @@ language: c
 services: docker
 os: linux
 script:
-    - sudo apt-get install -y conan
-    - make test
+    - docker-compose run --rm cpp make depends clean test
 
