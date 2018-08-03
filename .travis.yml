@@ -1,0 +1,8 @@
+language: c
+services: docker
+os: linux
+script:
+    - sudo apt-get install -y conan
+    - mkdir -p build
+    - make run
+
