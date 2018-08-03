@@ -1,8 +1,8 @@
 FROM dockcross/windows-x64
 ENV PYTHONUNBUFFERED 1
-# RUN echo 'deb http://ftp.us.debian.org/debian testing main contrib non-free' > /etc/apt/sources.list.d/gcc.testing.list
-# RUN apt-get update
-# RUN apt-get install -y -t testing g++
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+RUN sudo apt install -y nodejs
+RUN sudo npm install -g npm
 WORKDIR /work
 ADD requirements.txt /work
 RUN pip install -r requirements.txt
