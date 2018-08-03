@@ -1,0 +1,8 @@
+version: '3'
+services:
+    cpp:
+        image: makiolo/linux-x64
+        command: make depends clean test
+        volumes:
+            - .:/work
+
