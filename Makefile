@@ -1,16 +1,12 @@
 all: install
-install: compile
 
-setup:
-	npm run setup
+install:
+	npm install
 
-compile: setup
-	npm run compile
-
-test: compile
+test: install
 	npm test
 
-run: compile
+run: install
 	cd bin/ && LD_LIBRARY_PATH=`pwd` ./example
 
 docker-linux-x64:
