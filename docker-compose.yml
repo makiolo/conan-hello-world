@@ -1,8 +1,18 @@
 version: '3'
 services:
-    cpp:
-        build: .
-        command: make clean test
+    cpp-linux-x64:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile.linux-x64
+        command: make run
+        volumes:
+            - .:/work
+
+    cpp-windows-x64:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile.windows-x64
+        command: make run
         volumes:
             - .:/work
 

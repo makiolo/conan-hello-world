@@ -1,6 +1,9 @@
 language: c
 services: docker
 os: linux
+env:
+    - DOCKER=cpp-linux-x64
+    - DOCKER=cpp-windows-x64
 script:
-    - docker-compose run --rm cpp make clean test
+    - docker-compose run --rm $DOCKER make run
 

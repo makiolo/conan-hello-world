@@ -10,10 +10,14 @@ conan_basic_setup()
 set(Boost_DEBUG 0)
 find_package(Boost COMPONENTS coroutine context stacktrace_addr2line log random REQUIRED)
 
+# include($ENV{CMAKI_PWD}/node_modules/npm-mas-mas/cmaki/cmaki.cmake)
+# cmaki_find_package(json)
+
 add_definitions(-D_GNU_SOURCE)
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(entt/src)
 add_executable(example example.cpp)
 target_link_libraries(example ${Boost_LIBRARIES} dl)
-file(COPY ${CONAN_LIB_DIRS_BOOST} DESTINATION .)
+install(DIRECTORY ${CONAN_LIB_DIRS_BOOST}/ DESTINATION .)
+install(TARGETS example DESTINATION .)
 

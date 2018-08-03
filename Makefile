@@ -1,15 +1,21 @@
-all: build
+all: install
+install: compile
 
-clean:
-	(rm -Rf build/)
+setup:
+	npm run setup
 
-build:
-	mkdir -p build
-	(cd build && conan install .. && cmake .. && make -j8)
+compile: setup
+	npm run compile
 
-test: build
-	(cd ./build/bin && LD_LIBRARY_PATH=`pwd`/../lib ./example)
+test: compile
+	npm test
 
-docker:
-	docker-compose run --rm cpp make clean test
+run: compile
+	cd bin/ && LD_LIBRARY_PATH=`pwd` ./example
+
+docker-linux-x64:
+	docker-compose run --rm cpp-linux-x64 make run
+
+docker-windows-x64:
+	docker-compose run --rm cpp-windows-x64 make run
 
