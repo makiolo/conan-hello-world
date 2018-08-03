@@ -2,9 +2,9 @@ language: c
 services: docker
 os: linux
 env:
-    - DOCKER=cpp-linux-x64
-    - DOCKER=cpp-windows-x64
-    - DOCKER=cpp-android-arm64
+    - TARGET=docker-linux-x64
+    - TARGET=docker-windows-x64
+    - TARGET=docker-android-arm64
 script:
-    - docker-compose run --rm $DOCKER make run
+    - make $TARGET
 
