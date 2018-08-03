@@ -3,8 +3,8 @@ services: docker
 os: linux
 env:
     - TARGET=docker-linux-x64
-    - TARGET=docker-windows-x64
-    - TARGET=docker-android-arm64
+    # - TARGET=docker-windows-x64
+    # - TARGET=docker-android-arm64
 script:
     - make $TARGET
 
