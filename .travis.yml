@@ -4,6 +4,7 @@ os: linux
 env:
     - DOCKER=cpp-linux-x64
     - DOCKER=cpp-windows-x64
+    - DOCKER=cpp-android-arm64
 script:
     - docker-compose run --rm $DOCKER make run
 

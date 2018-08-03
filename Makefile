@@ -19,3 +19,7 @@ docker-linux-x64:
 docker-windows-x64:
 	docker-compose run --rm cpp-windows-x64 make run
 
+docker-android-arm64:
+	docker-compose run --rm cpp-android-arm64 make run
+
+

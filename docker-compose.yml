@@ -16,3 +16,11 @@ services:
         volumes:
             - .:/work
 
+    cpp-android-arm64:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile.android-arm64
+        command: make run
+        volumes:
+            - .:/work
+
