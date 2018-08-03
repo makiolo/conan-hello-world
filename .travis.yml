@@ -2,5 +2,5 @@ language: c
 services: docker
 os: linux
 script:
-    - docker-compose run --rm cpp make depends clean test
+    - docker-compose run --rm cpp make clean test
 
