@@ -6,7 +6,6 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
-set(CONAN_EXE_LINKER_FLAGS_GLEW_LIST "")
 
 set(Boost_DEBUG 0)
 find_package(Boost COMPONENTS coroutine context stacktrace_addr2line log random REQUIRED)
@@ -16,11 +15,10 @@ find_package(OpenGL)
 find_package(Glew)
 
 add_definitions(-D_GNU_SOURCE)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -framework OpenGL")
-set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -framework OpenGL")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -framework OpenGL")
+# set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -framework OpenGL")
 list(REMOVE_AT GLEW_LIBRARIES -1)
 list(REMOVE_AT GLEW_LIBRARIES -1)
-message( "---------> ${GLEW_LIBRARIES}" )
 
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${Curl_INCLUDE_DIRS})
@@ -28,8 +26,6 @@ include_directories(${SDL2_INCLUDE_DIRS})
 include_directories(${GLEW_INCLUDE_DIRS})
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(include/entt/src)
-
-message("-----> ${OPENGL_INCLUDE_DIRS}")
 
 add_executable(example src/main.cpp)
 target_link_libraries(example ${Boost_LIBRARIES} ${Curl_LIBRARIES} ${SDL2_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} dl)
