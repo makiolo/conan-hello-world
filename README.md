@@ -4,7 +4,7 @@
 
 # How compile this project and your depends?
 
-````bash
+```bash
 make
 ```
 
