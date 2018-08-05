@@ -7,7 +7,7 @@ test: install
 	npm test
 
 run: install
-	cd bin/ && LD_LIBRARY_PATH=`pwd` ./example
+	cd bin/Debug && LD_LIBRARY_PATH=`pwd` ./example
 
 clean:
 	-@rm -Rf bin
