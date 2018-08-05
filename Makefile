@@ -1,3 +1,5 @@
+MODE ?= Debug
+
 all: install
 
 install:
@@ -7,7 +9,7 @@ test: install
 	npm test
 
 run: install
-	cd bin/Debug && LD_LIBRARY_PATH=`pwd` ./example
+	cd bin/${MODE} && LD_LIBRARY_PATH=`pwd` ./example
 
 clean:
 	-@rm -Rf bin
