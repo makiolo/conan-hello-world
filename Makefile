@@ -3,7 +3,7 @@ MODE ?= Debug
 all: install
 
 install:
-	npm install
+	npm install --unsafe-perm
 
 test: install
 	npm test
@@ -20,15 +20,16 @@ clean:
 	-@rm -Rf x86_64-w64-mingw32.static-gcc
 	-@rm artifacts.json
 
-ci: clean run
+prepare:
+	npm install --save-dev https://github.com/makiolo/npm-mas-mas.git
 
-docker-linux-x64:
-	docker-compose run --rm cpp-linux-x64 make ci
+linux64:
+	docker-compose run --rm linux64 make run
 
-docker-windows-x64:
-	docker-compose run --rm cpp-windows-x64 make ci
+windows64:
+	docker-compose run --rm windows64 make run
 
-docker-android-arm64:
-	docker-compose run --rm cpp-android-arm64 make ci
+android64:
+	docker-compose run --rm android64 make run
 
 

@@ -1,26 +1,45 @@
 version: '3'
 services:
-    cpp-linux-x64:
+    servfactor:
+        build: ./node_modules/npm-mas-mas/servfactor
+        volumes:
+            - ./node_modules/npm-mas-mas/servfactor/:/var/www/html/cpp
+            - ./node_modules/npm-mas-mas/servfactor/packages:/var/www/html/packages
+
+    linux64:
         build:
             context: .
             dockerfile: ./docker/Dockerfile.linux-x64
-        command: make run
+        environment:
+            - NPP_SERVER=http://servfactor/cpp
+        command: npm install
         volumes:
             - .:/work
+        links:
+            - servfactor
 
-    cpp-windows-x64:
+    windows64:
         build:
             context: .
             dockerfile: ./docker/Dockerfile.windows-x64
-        command: make run
+        environment:
+            - NPP_SERVER=http://servfactor/cpp
+        command: make install
         volumes:
             - .:/work
+        links:
+            - servfactor
 
-    cpp-android-arm64:
+    android64:
         build:
             context: .
             dockerfile: ./docker/Dockerfile.android-arm64
-        command: make run
+        environment:
+            - NPP_SERVER=http://servfactor/cpp
+        command: make install
         volumes:
             - .:/work
+        links:
+            - servfactor
+
 
