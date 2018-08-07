@@ -7,4 +7,4 @@ env:
     # - TARGET=windows64
     # - TARGET=android64
 script:
-    - make clean prepare $TARGET
+    - MODE=$MODE make clean prepare $TARGET
