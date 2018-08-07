@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
 include("$ENV{CMAKI_PWD}/node_modules/npm-mas-mas/cmaki/cmaki.cmake")
-cmaki_find_package(dune-glew)
 cmaki_find_package(sdl2)
 cmaki_find_package(json)
 
