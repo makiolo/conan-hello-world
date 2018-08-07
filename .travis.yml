@@ -2,10 +2,9 @@ language: c
 services: docker
 os: linux
 env:
-    - TARGET=docker-linux-x64 MODE=Debug
-    - TARGET=docker-linux-x64 MODE=Release
-    # - TARGET=docker-windows-x64
-    # - TARGET=docker-android-arm64
+    - TARGET=linux64 MODE=Debug
+    - TARGET=linux64 MODE=Release
+    # - TARGET=windows64
+    # - TARGET=android64
 script:
     - make $TARGET
-
