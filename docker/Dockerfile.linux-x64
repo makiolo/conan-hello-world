@@ -9,17 +9,7 @@ RUN apt install -y nodejs
 RUN npm install -g npm
 RUN apt install -y libgl1-mesa-dev
 RUN apt install -y libx11-dev
-# RUN ln -sf /usr/bin/python /usr/bin/python3.6
-# RUN ln -sf /usr/bin/pip /usr/bin/pip3
-# RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-# RUN bash miniconda.sh -b -p $HOME/miniconda
-# RUN hash -r
-# RUN $HOME/miniconda/bin/conda config --set always_yes yes --set changeps1 no
-# RUN $HOME/miniconda/bin/conda update -q conda
-# RUN $HOME/miniconda/bin/conda info -a
-# RUN $HOME/miniconda/bin/conda create -q -n test-environment python=3.6
-# RUN chmod +x $HOME/miniconda/bin/activate
-# RUN $HOME/miniconda/bin/activate test-environment
+RUN apt install -y python3-pip
 WORKDIR /work
 ADD requirements.txt /work
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
