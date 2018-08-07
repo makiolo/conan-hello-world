@@ -8,5 +8,5 @@
 npm install
 ```
 
-Works in Linux, Windows and Mac
-Depends: g++, npm, cmake
+- Works in Linux, Windows and Mac
+- Depends: g++, npm, cmake
