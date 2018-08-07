@@ -5,8 +5,8 @@
 # How compile this project and your depends?
 
 ```bash
-make
+npm install
 ```
 
-See simple Makefile if you need more.
-
+Works in Linux, Windows and Mac
+Depends: g++, npm, cmake
