@@ -1,12 +1,10 @@
 project(gamedev CXX)
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.7.2)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
 include("$ENV{CMAKI_PWD}/node_modules/npm-mas-mas/cmaki/cmaki.cmake")
-cmaki_find_package(sdl2)
-cmaki_find_package(json)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
@@ -21,5 +19,5 @@ include_directories(include/entt/src)
 install(DIRECTORY ${CONAN_LIB_DIRS_BOOST}/ DESTINATION ${CMAKE_BUILD_TYPE})
 
 add_definitions(-D_GNU_SOURCE)
-cmaki_executable(example src/example.cpp DEPENDS ${Boost_LIBRARIES} dl)
+cmaki_executable(conan-hello-world src/game.cpp DEPENDS ${CONAN_LIBS} ${Boost_LIBRARIES} dl)
 

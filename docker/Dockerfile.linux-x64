@@ -1,14 +1,18 @@
-FROM dockcross/linux-x64
+FROM gcc:5.5.0
 ENV PYTHONUNBUFFERED 1
-RUN echo 'deb http://ftp.us.debian.org/debian testing main contrib non-free' > /etc/apt/sources.list.d/gcc.testing.list
+# RUN echo 'deb http://ftp.us.debian.org/debian testing main contrib non-free' > /etc/apt/sources.list.d/gcc.testing.list
 RUN apt-get update
-RUN apt-get install -y -t testing g++
+# RUN apt-get install -y -t testing g++
+# RUN apt-get install -y g++ gcc libyaml-dev cython-dev
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt install -y nodejs
 RUN npm install -g npm
-RUN apt install -y libgl1-mesa-dev
-RUN apt install -y libx11-dev
-RUN apt install -y python3-pip
+# RUN apt install -y libgl1-mesa-dev
+# RUN apt install -y libx11-dev
+RUN apt install -y python3-pip cmake
 WORKDIR /work
 ADD requirements.txt /work
+RUN pip3 install -U pip
 RUN pip3 install -r requirements.txt
+RUN conan remote add bincrafters "https://api.bintray.com/conan/bincrafters/public-conan"
+

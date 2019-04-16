@@ -1,4 +1,6 @@
 MODE ?= Debug
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
 all: install
 
@@ -9,7 +11,7 @@ test: install
 	npm test
 
 run: install
-	cd bin/${MODE} && LD_LIBRARY_PATH=`pwd` ./example
+	cd bin/${MODE} && LD_LIBRARY_PATH=$(pwd) ./${current_dir}
 
 clean:
 	-@rm -Rf bin
@@ -24,12 +26,15 @@ prepare:
 	npm install --save-dev https://github.com/makiolo/npm-mas-mas.git
 
 linux64:
+	docker-compose build linux64
 	docker-compose run --rm linux64 make run
 
 windows64:
+	docker-compose build windows64
 	docker-compose run --rm windows64 make run
 
 android64:
+	docker-compose build android64
 	docker-compose run --rm android64 make run
 
 
